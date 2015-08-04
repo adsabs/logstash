@@ -6,17 +6,11 @@
 FROM phusion/baseimage
 
 # Provisioning
-## Get the elasticsearch PGP key
-RUN apt-key adv --keyserver hkp://pgp.mit.edu --recv D88E42B4
-
-## Add Logstash to the apt-get source list
-RUN echo 'deb http://packages.elasticsearch.org/logstash/1.4/debian stable main' > /etc/apt/sources.list.d/logstash.list
-
-## Update the apt-get source list
-RUN apt-get update
-
 ## Install dependencies
-RUN apt-get install -y logstash git
+RUN apt-get update && apt-get install -y wget git openjdk-7-jre
+
+## Install logstash, fixed at 1.4.2 - SSL problems for > 1.4.2
+RUN wget -qO- https://download.elasticsearch.org/logstash/logstash/logstash-1.4.2.tar.gz | tar xvz -C /opt/
 
 ## Install Governor binary
 RUN mkdir -p /opt/governor
