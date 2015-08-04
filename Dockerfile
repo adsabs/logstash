@@ -10,7 +10,7 @@ FROM phusion/baseimage
 RUN apt-get update && apt-get install -y wget git openjdk-7-jre
 
 ## Install logstash, fixed at 1.4.2 - SSL problems for > 1.4.2
-RUN wget -qO- https://download.elasticsearch.org/logstash/logstash/logstash-1.4.2.tar.gz | tar xvz -C /opt/
+RUN wget -qO- https://download.elasticsearch.org/logstash/logstash/logstash-1.4.2.tar.gz | tar xvz -C /opt/ && mv /opt/logstash-1.4.2 /opt/logstash
 
 ## Install Governor binary
 RUN mkdir -p /opt/governor
