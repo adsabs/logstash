@@ -10,4 +10,4 @@ To create new certs use make_certs.sh
 
 Basic usage:
   1. `docker build -t adsabs/logstash .`
-  1. `docker run -d --hostname logstash --name logstash -p 6767:6767 --log-driver syslog adsabs/logstash
+  1. `docker run -d --hostname logstash --name logstash -p 6767:6767 --log-driver syslog adsabs/logstash`
