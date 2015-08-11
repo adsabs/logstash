@@ -27,6 +27,13 @@ COPY resources/logstash-forwarder.crt /etc/pki/tls/certs/logstash-forwarder/
 COPY resources/govern.conf /opt/governor/
 COPY resources/logstash.sh /etc/service/logstash/run
 
+# Add GeoLiteDb cronjob
+## 
+COPY resources/runscript.sh /runscript.sh
+RUN /runscript.sh
+COPY resources/cronjob.sh /cronjob.sh
+RUN crontab /cronjob.sh
+
 # Define the entry point for docker<->logstash
 ## Logstash-forwarder
 EXPOSE 6767
